@@ -1,0 +1,23 @@
+<!-- jobs.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Openings</title>
+</head>
+<body>
+    {% for category, jobs in jobs_dict.items() %}
+    <h2>{{ category }}</h2>
+    <ul>
+        {% for job in jobs %}
+        <li>
+            <h3>{{ job['Job Title'] }}</h3>
+            <p>Job ID: {{ job['Job ID'] }}</p>
+            <p>Job URL: <a href="{{ job['Job URL'] }}">{{ job['Job URL'] }}</a></p>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endfor %}
+</body>
+</html>
