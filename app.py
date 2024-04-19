@@ -1,3 +1,6 @@
+import nltk
+nltk.download('punkt')
+nltk.download('stopwords')
 from flask import Flask, render_template, request, jsonify
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -146,7 +149,7 @@ def predict():
     for t2 in temp:
         temp2.append(t2[0])
     print(temp2)
-    api = ReedAPI('API KEY HERE')
+    api = ReedAPI('1af27b9a-5f60-4961-9643-8e7779c50109')
     jobs_dict = {}
 
     for keyword in temp2:
@@ -166,7 +169,8 @@ def predict():
     # Convert the dictionary to JSON format
     # json_data = json.dumps(jobs_dict, indent=4)
     # return json_data
-    return jsonify({'category': jobs_dict})
+    # return jsonify({'category': jobs_dict})
+    return render_template('jobs.html',jobs_dict=jobs_dict)
 
 if __name__ == '__main__':
     app.run(debug=True)
